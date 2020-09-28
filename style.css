@@ -4,7 +4,6 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 body{
-    background-color: rgb(7, 81, 150);
     overflow-x: hidden;
     font-weight: 400;
 }
@@ -18,14 +17,14 @@ section .leftAside{
     display: flex;
     flex-direction: column;
     background-color:#bdc3c7;
-    padding: 20vh 10vw;
+    padding: 50px;
     height: 100vh;
 }
 
 section .rightAside{
     flex: 1;
     background-color: #ecf0f1;
-    padding: 10vh 10vw;
+    padding: 50px;
     height: 100vh;
 }
 
@@ -37,13 +36,6 @@ section .rightAside{
 .message{
     height: 20vh;
     margin-bottom: 1vh;
-}
-
-
-.chatDisplay{
-    padding: 10vw;
-    width: 80vh;
-    height: 100%;
 }
 
 button{
