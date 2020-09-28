@@ -1,9 +1,9 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 body{
-    font-family: 'Source Sans Pro', sans-serif;
     background-color: rgb(7, 81, 150);
     overflow-x: hidden;
     font-weight: 400;
@@ -17,15 +17,16 @@ section .leftAside{
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: rgb(189, 129, 141);
-    /* background-color: rgba(31, 145, 238, 0.726); */
+    background-color:#bdc3c7;
     padding: 20vh 10vw;
+    height: 100vh;
 }
 
 section .rightAside{
     flex: 1;
-    background-color: rgb(234, 227, 236);
+    background-color: #ecf0f1;
     padding: 10vh 10vw;
+    height: 100vh;
 }
 
 .name{
@@ -49,7 +50,14 @@ button{
     border: none;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: rgb(7, 197, 70);
-    font-weight: 400;
+    font-weight: 500;
+    font-size: larger;
     color: rgb(253, 253, 252);
     height: 3em;
+}
+
+.name, .message, button{
+    box-shadow:0 0 10px 2px rgba(92, 91, 91, 0.103);
+    border:solid 1px rgba(31, 30, 30, 0);
+    border-radius: 5px;
 }
