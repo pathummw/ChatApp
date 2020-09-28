@@ -1,0 +1,55 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: rgb(7, 81, 150);
+    overflow-x: hidden;
+    font-weight: 400;
+}
+
+section{
+    display: flex;
+}
+
+section .leftAside{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(189, 129, 141);
+    /* background-color: rgba(31, 145, 238, 0.726); */
+    padding: 20vh 10vw;
+}
+
+section .rightAside{
+    flex: 1;
+    background-color: rgb(234, 227, 236);
+    padding: 10vh 10vw;
+}
+
+.name{
+    height: 7vh;
+    padding-bottom:0;
+    margin-bottom: 1vh;
+}
+.message{
+    height: 20vh;
+    margin-bottom: 1vh;
+}
+
+
+.chatDisplay{
+    padding: 10vw;
+    width: 80vh;
+    height: 100%;
+}
+
+button{
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: rgb(7, 197, 70);
+    font-weight: 400;
+    color: rgb(253, 253, 252);
+    height: 3em;
+}

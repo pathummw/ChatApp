@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+    <script src="scripts.js"></script>
+    <title>Chat App</title>
+</head>
+<body>
+    <section>
+        <aside class="leftAside">
+            <input id="name" class="name" type="text" placeholder="Name" onfocus="onFocus(this.id)">
+            <input id="message" class="message" type="text" placeholder="Message" onfocus="onFocus(this.id)">
+            <button onclick="submit()">Submit</button>
+        </aside>
+        <aside id="rightCanvas" class="rightAside">
+            <!-- <input id="canvas" class="chatDisplay" type="text" placeholder="Display"> -->
+        </aside>
+        
+    </section>
+</body>
+</html>
