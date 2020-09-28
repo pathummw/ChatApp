@@ -30,11 +30,12 @@ section .rightAside{
 
 .name{
     height: 7vh;
-    padding-bottom:0;
+    padding-left:1em;
     margin-bottom: 1vh;
 }
 .message{
     height: 20vh;
+    padding-left:1em;
     margin-bottom: 1vh;
 }
 
