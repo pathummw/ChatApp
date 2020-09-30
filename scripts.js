@@ -100,8 +100,11 @@ function uppdateTime(){
         else if(diff >= 1){
             document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>"+ "<em>" +" : More than 1 minutes ago"+"</em>"+ "<br>"+ message;
         }
-        else{
+        else if(diff >=0){
             document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>"+ "<em>" +" : just now"+"</em>"+ "<br>"+ message;
+        }
+        else{
+            document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>"+ "<em>" +" : long time ago"+"</em>"+ "<br>"+ message;
         }
 
         
