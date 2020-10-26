@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
-    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <script src="scripts.js" defer></script>
     <title>Chat App</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
         <aside class="leftAside">
             <input id="name" class="name" type="text" placeholder="Name" onfocus="onFocus(this.id)">
             <textarea id="message" class="message" type="text" placeholder="Message" onfocus="onFocus(this.id)"> </textarea>
-            <button onclick="submit()">Submit</button>
+            <button id="btn">Submit</button>
         </aside>
         <aside id="rightCanvas" class="rightAside">
         </aside>
