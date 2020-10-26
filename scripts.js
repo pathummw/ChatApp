@@ -28,46 +28,58 @@ function submit(){
         
             let para = document.createElement("div");   //make the div element dynamically
             para.style.display = 'inline-block';  //style the p element
-            para.style.backgroundColor = 'rgba(31, 145, 238, 0.726)';
+            para.style.backgroundColor = '#ffffff';   //rgba(31, 145, 238, 0.726)
+            para.style.boxShadow = '0 4px 8px 0 rgba(0,0,0,0.2)'; 
             para.style.borderRadius = '1em';
             para.style.marginBottom = '0.5em';
             para.style.padding = '1em';
+            para.style.margin = '0.5em';
             para.style.position = "relative";
+
+
+            let p = document.createElement("p");  //created new p element
+            p.style.backgroundColor = "#7bed9f";
+            p.style.padding = '0.25em 0.5em';
+            p.style.borderRadius = '1em';
             
             editIcon = document.createElement("i");
-            editIcon.className = "editIcon fa fa-pencil-square";
+            editIcon.className = "editIcon fa fa-pencil-square";    //  
             editIcon.addEventListener("click", function(){editMessage(event,this)},true);
            
-
-            let nodeName;
             let nodeMsg;
-            let nodeTime;
             let i = objectList.length-1;
 
-            nodeName = document.createTextNode(objectList[i].name);
-            nodeTime = document.createTextNode(objectList[i].time.toLocaleTimeString());
-            linebreak = document.createElement("br");
+
+
+
+            let hName = document.createElement("h4");  //created new p element for display name
+            hName.style.color = "#2d3436";
+            hName.style.padding = '0.25em 0';
+            hName.style.borderRadius = '1em';
+            hName.style.fontWeight = "bold";
+
+
             nodeMsg = document.createTextNode(objectList[i].message);
             para.id = [i];  //Assign a id to div 
                 
-                
 
-            
-            para.appendChild(nodeName);
-            para.appendChild(nodeTime);
-            para.appendChild(linebreak);
+            para.appendChild(p);
+            para.appendChild(hName);
             para.appendChild(nodeMsg);
             para.appendChild(editIcon);
+            
     
             let element = document.getElementById("rightCanvas");
             element.appendChild(para);
+
+
+            document.getElementsByTagName("h4")[i].innerHTML = objectList[i].name;
 
     }
 
         
 
     }else{
-        alert("Edit");
         edit = false;
         submitEditedMessage();
 
@@ -76,7 +88,7 @@ function submit(){
     
 
         
-    /* uppdateTime(); */
+    uppdateTime();
 }
 
 function validation(name,message){
@@ -106,30 +118,29 @@ function uppdateTime(){
     
     for(let i=0; i<objectList.length; i++){
 
-        let logTimeMin = objectList[i].time.getMinutes();
-        let name = objectList[i].name;
-        let message = objectList[i].message;
-        let curentTimeMinutes = new Date().getMinutes();
+        let logTime = objectList[i].time;
+        let curentTime = new Date();
+        let diff = Math.floor((curentTime - logTime)/1000);  //get time difference in seconds
 
-        let diff = curentTimeMinutes - logTimeMin;
-
-        if(diff >= 5){
-            document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>" + "<em>" +"  : More than 5 minutes ago"+"</em>"+ "<br>"+ message;
+        if(diff >= 300){
+            document.getElementsByTagName("p")[i].innerHTML = "More than 5 minutes ago";
+            /* document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>" + "<em>" +"  : More than 5 minutes ago"+"</em>"+ "<br>"+ message; */
         }
-        else if(diff >= 3){
-            document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>" + "<em>" +"  : More than 3 minutes ago"+"</em>" + "<br>"+ message;
+        else if(diff >= 180){
+            /* document.getElementById(i).childNodes[1].nodeValue = "More than 3 minutes ago"; */
+            document.getElementsByTagName("p")[i].innerHTML = "More than 3 minutes ago";
         }
-        else if(diff >= 2){
-            document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>" +"<em>" +" : More than 2 minutes ago"+"</em>"+ "<br>"+ message;
+        else if(diff >= 120){
+            document.getElementsByTagName("p")[i].innerHTML = "More than 2 minutes ago";
         }
-        else if(diff >= 1){
-            document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>"+ "<em>" +" : More than 1 minutes ago"+"</em>"+ "<br>"+ message;
+        else if(diff >= 60){
+            document.getElementsByTagName("p")[i].innerHTML = "More than 1 minutes ago";
         }
         else if(diff >=0){
-            document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>"+ "<em>" +" : just now"+"</em>"+ "<br>"+ message;
+            document.getElementsByTagName("p")[i].innerHTML = "Just now";
         }
         else{
-            document.getElementById("id"+[i]).innerHTML = "<mark>" +name+ "</mark>"+ "<em>" +" : long time ago"+"</em>"+ "<br>"+ message;
+            /* document.getElementById(i).childNodes[1].nodeValue = "Long time ago"; */
         }
 
         
@@ -141,103 +152,37 @@ function uppdateTime(){
 
 
 function editMessage(event){
-    alert("edit msg");
 
     edit = true;
-
-    /* edit = true; */  // set the edit true to know if it is edit message or newly created message
-    /* alert("inside edit"); */
     para = event.target.parentNode;   //get the div that clicked 
 
-    /* console.log(para.id); */ ////////////////////
-
-   /* para.id === objectList[element].id; */
-    /* console.log(para.pId); */
-
-/* if(objectList.id.value === para.id){
-    console.log(objectList.id.value);
-} */
     let foundObject = objectList.find(obj => parseInt(obj.id) == parseInt(para.id));
-    console.log(foundObject);
+    /* console.log(foundObject); */
 
     if(foundObject){
         console.log("found obj");
         document.querySelector(".name").value = foundObject.name;
         document.querySelector(".message").value = foundObject.message;
-        /* document.querySelector(".time").value = foundObject.time; */
     }else{
-        console.log("not found obj");
+        console.log("Not found obj");
     }
-
-
-    if(updateObjectList()){
-        /* document.getElementById("btn").addEventListener("click", submit); */
-        /* alert("Set submit event again"); */
-    }
-
 
 }
 
-function updateObjectList(){
-    /* alert("UpdateObject funt"); */
-
-    //after adding edit the msg, add submit eventlistner again to submit button 
-    
-
-    /* document.querySelector(".name").value = '';  */ /* clear the input field values */
-    /* document.querySelector(".message").value = ''; */
-
-    //update the objectList with new values
-}
 
 function submitEditedMessage(){
-    /* document.getElementById(para.id).innerHTML = `${document.querySelector(".name").value} ${document.querySelector(".message").value} ${today}`; */
-    /* document.getElementById(para.id).innerHTML.name = document.querySelector(".name").value; */
-    /* console.log(document.getElementById(para.id).nodeMsg); */
 
-    /* let textNode = document.getElementById(para.id).firstChild; */
-    /* let childNodes = document.getElementById(para.id).childNodes; */
-    /* console.log(childNodes); */
-    /* console.log(document.querySelector(".name").value); */
-    //update the edited objects in array
-    alert("submitEditedMessage");
+    /* document.getElementById(para.id).childNodes[1].nodeValue = document.querySelector(".name").value; */
+    document.getElementsByTagName("h4")[para.id].innerHTML = document.querySelector(".name").value;
+    /* document.getElementById(para.id).childNodes[1].nodeValue = today.toLocaleTimeString(); */
+    document.getElementById(para.id).childNodes[2].nodeValue = document.querySelector(".message").value;
 
 
-    document.getElementById(para.id).childNodes[0].nodeValue = document.querySelector(".name").value;
-    document.getElementById(para.id).childNodes[1].nodeValue = today.toLocaleTimeString();
-    document.getElementById(para.id).childNodes[3].nodeValue = document.querySelector(".message").value;
-
-
-
-
-//update objectList with newly edited values
+    //update objectList with newly edited values
     objectList[para.id].name = document.querySelector(".name").value;
     objectList[para.id].message = document.querySelector(".message").value;
     objectList[para.id].time = today;
 
     document.querySelector(".name").value = "";
     document.querySelector(".message").value = "";
-
-    /* edit = false; */
 }
-
-
-/* objectList[0].name */
-
-
-
-/* document.getElementById(1).childNodes[1].nodeValue
-"21:52:54"
-document.getElementById(1).childNodes[0].nodeValue
-"Himansa"
-document.getElementById(1).childNodes[2].nodeValue
-null
-document.getElementById(1).childNodes[3].nodeValue
-
-"22" 
-
-//i icon
-document.getElementById(2).lastChild    
-
-
-*/
